@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotel Ease - Premium Hotel Management</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .feature-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    
+    .feature-description {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Room Types */
+    .room-showcase {
+      margin: 3rem 0;
+    }
+    
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .room-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .room-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .room-image {
+      height: 200px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+    
+    .room-content {
+      padding: 1.5rem;
+    }
+    
+    .room-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    
+    .room-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 1rem;
+    }
+    
+    .room-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .room-features li {
+      color: #64748b;
+      margin-bottom: 0.25rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .room-features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+      font-weight: bold;
+    }
+    
+    /* Enhanced Navigation */
+    .enhanced-nav {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Date inputs enhancement */
+    .date-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .date-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .btn-secondary {
+      background: rgba(100, 116, 139, 0.1);
+      color: #64748b;
+      border: 2px solid #e2e8f0;
+    }
+    
+    .btn-secondary:hover {
+      background: #64748b;
+      color: white;
+      border-color: #64748b;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .testimonial-author {
+      color: #667eea;
+      font-weight: 600;
+    }
+    
+    /* Footer Info */
+    .footer-info {
+      background: rgba(44, 62, 80, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #2c3e50;
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .contact-item {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+    }
+    
+    /* Mobile Enhancements */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .date-inputs {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-actions {
+        flex-direction: column;
+      }
+      
+      .room-image {
+        height: 150px;
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Enhanced Navigation -->
+  <div class="enhanced-nav">
+    <div class="top-nav">
+      <a href="admin_login.php" class="nav-btn">👨‍💼 Admin Panel</a>
+      <a href="user_login.php" class="nav-btn">🔐 User Login</a>
+      <a href="user_register.php" class="nav-btn">📝 Create Account</a>
+      <a href="user_bookings.php" class="nav-btn">📋 My Bookings</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="logo">
+        <div class="logo-circle">🏨</div>
+        <span>Hotel Ease</span>
+      </div>
+      <h1 class="hero-title">Premium Hotel Experience</h1>
+      <p class="hero-subtitle">
+        Experience luxury and comfort with our world-class hospitality. 
+        Book your perfect stay with ease and enjoy memorable moments.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3 class="feature-title">Instant Booking</h3>
+        <p class="feature-description">Quick and easy reservation system with instant confirmation</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏆</span>
+        <h3 class="feature-title">Premium Service</h3>
+        <p class="feature-description">5-star service with attention to every detail</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌍</span>
+        <h3 class="feature-title">Prime Location</h3>
+        <p class="feature-description">Located in the heart of Penang with easy access</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💎</span>
+        <h3 class="feature-title">Luxury Amenities</h3>
+        <p class="feature-description">Premium facilities and modern conveniences</p>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="booking-card fade-in">
+      <h2>Reserve Your Room</h2>
+      <form id="bookingForm" action="data.php" method="POST">
+        <div>
+          <label for="guestName">Guest Name</label>
+          <input type="text" id="guestName" name="guestName" placeholder="Enter your full name" required />
+        </div>
+
+        <div>
+          <label for="roomType">Room Type</label>
+          <select id="roomType" name="roomType" required>
+            <option value="">Choose your preferred room</option>
+            <option value="Single">Single Room - RM100/night</option>
+            <option value="Double">Double Room - RM150/night</option>
+            <option value="Suite">Premium Suite - RM250/night</option>
+          </select>
+        </div>
+
+        <div class="date-inputs">
+          <div class="date-group">
+            <label for="checkIn">Check-in Date</label>
+            <input type="date" id="checkIn" name="checkIn" required />
+          </div>
+          <div class="date-group">
+            <label for="checkOut">Check-out Date</label>
+            <input type="date" id="checkOut" name="checkOut" required />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-full">Book Room Now</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Room Showcase -->
+    <div class="room-showcase">
+      <h2 class="text-center">Our Premium Rooms</h2>
+      <div class="room-grid">
+        <div class="room-card">
+          <div class="room-image">🛏️</div>
+          <div class="room-content">
+            <h3 class="room-name">Single Room</h3>
+            <div class="room-price">RM100<span style="font-size:0.8rem;color:#64748b;">/night</span></div>
+            <ul class="room-features">
+              <li>Queen-size bed</li>
+              <li>City view</li>
+              <li>Free WiFi</li>
+              <li>Air conditioning</li>
+              <li>Private bathroom</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="room-card">
+          <div class="room-image">🏠</div>
+          <div class="room-content">
+            <h3 class="room-name">Double Room</h3>
+            <div class="room-price">RM150<span style="font-size:0.8rem;color:#64748b;">/night</span></div>
+            <ul class="room-features">
+              <li>Two queen beds</li>
+              <li>Garden view</li>
+              <li>Mini refrigerator</li>
+              <li>Work desk</li>
+              <li>Premium amenities</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="room-card">
+          <div class="room-image">👑</div>
+          <div class="room-content">
+            <h3 class="room-name">Premium Suite</h3>
+            <div class="room-price">RM250<span style="font-size:0.8rem;color:#64748b;">/night</span></div>
+            <ul class="room-features">
+              <li>King-size bed</li>
+              <li>Ocean view</li>
+              <li>Living area</li>
+              <li>Kitchenette</li>
+              <li>Luxury bathroom</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <p class="testimonial-text">
+        "An absolutely wonderful experience! The staff was incredibly welcoming and the rooms were spotless. 
+        Will definitely be returning for our next vacation."
+      </p>
+      <p class="testimonial-author">- Sarah & Michael Johnson</p>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="footer-info">
+      <h3>Contact Information</h3>
+      <div class="contact-info">
+        <div class="contact-item">
+          <strong>📍 Address</strong><br>
+          23, Kampung Baharu<br>
+          11400 Ayer Itam, Penang
+        </div>
+        <div class="contact-item">
+          <strong>📞 Phone</strong><br>
+          +(60) 12-345 6789<br>
+          Available 24/7
+        </div>
+        <div class="contact-item">
+          <strong>✉️ Email</strong><br>
+          info@hotelease.com<br>
+          reservations@hotelease.com
+        </div>
+        <div class="contact-item">
+          <strong>🕐 Check-in/out</strong><br>
+          Check-in: 3:00 PM<br>
+          Check-out: 12:00 PM
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set minimum date to today
+    document.addEventListener('DOMContentLoaded', function() {
+      const today = new Date().toISOString().split('T')[0];
+      const checkInInput = document.getElementById('checkIn');
+      const checkOutInput = document.getElementById('checkOut');
+      
+      checkInInput.setAttribute('min', today);
+      checkOutInput.setAttribute('min', today);
+      
+      // Update checkout minimum when checkin changes
+      checkInInput.addEventListener('change', function() {
+        const checkInDate = new Date(checkInInput.value);
+        checkInDate.setDate(checkInDate.getDate() + 1);
+        const minCheckOut = checkInDate.toISOString().split('T')[0];
+        checkOutInput.setAttribute('min', minCheckOut);
+        
+        // Clear checkout if it's before the new minimum
+        if (checkOutInput.value && checkOutInput.value <= checkInInput.value) {
+          checkOutInput.value = '';
+        }
+      });
+      
+      // Form validation
+      document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        const checkIn = new Date(checkInInput.value);
+        const checkOut = new Date(checkOutInput.value);
+        
+        if (checkOut <= checkIn) {
+          e.preventDefault();
+          alert('Check-out date must be after check-in date.');
+          return false;
+        }
+        
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Processing...';
+      });
+    });
+  </script>
